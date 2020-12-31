@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Digit Span Task</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet1.css"/>
+<script type="text/javascript" src="Script1.js"></script>
+
+</head>
+
+<body>
+
+<h3>Create your anonymous personal code:!</h3>
+ <input type="text" maxlength="4" id="show" class="input" style="text-align:center;">
+
+<h3>Instructions for creating a personal code:</h3>
+<p>First symbol: Second letter of your name (e.g. M<b>a</b>rta</p>
+<p>Second symbol: Third letter of your surname (e.g. Me<b>t</b>s)</p>
+<p>Last two digits of your phone number (e.g. 5376<b>92</b>)</p>
+<p>Example of full personal code(<b>at92</b>)</p>
+
+<button type="button" class="button" onclick="myFunction();">Next</button>
+
+ <script>
+
+function myFunction() {
+var numbers = document.getElementById('show').value;
+if(numbers.length == '4'){
+window.location = 'Page4.html';
+}
+else{
+alert("Please enter valid data");
+}
+}
+</script>
+
+</body>
+</html>

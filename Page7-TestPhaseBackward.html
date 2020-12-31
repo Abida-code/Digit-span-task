@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Digit Span Task</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
+<script type="text/javascript" src="Script1.js"></script>
+
+</head>
+
+<body>
+<div class="container" id="testinggg">
+<h2>Digit Span Memory Test two subtasks:</h2><Span>
+<h3>Please Enter Shown numbers in Backward order</h3>
+   <div class="Forward">
+ <!--  <label id="test">  </label>
+   <br>
+ --> 
+      <label id="label" style="color:green;">  </label>
+	  <label id="finish" style="color:green;">  </label>
+	  <label id="err" style="color:red;">  </label>
+	  <label id="error" style="color:red;">  </label>
+	  <br>
+      <input type="text" id="show" class="input" style="text-align:center;">
+   <form>
+    <table class="table" class="table">
+  <tr>
+ <td> <input type="button" value="1" onclick="calcNumbers(1)" class="button"> </td>
+<td> <input type="button" value="2" onclick="calcNumbers(2)" class="button"> </td>
+<td> <input type="button" value="3" onclick="calcNumbers(3)" class="button"> </td>
+ <td> <input type="button" value="4" onclick="calcNumbers(4)" class="button"> </td>
+ </tr>
+ <tr>
+ <td> <input type="button" value="5" onclick="calcNumbers(5)" class="button"> </td>
+ <td> <input type="button" value="6" onclick="calcNumbers(6)" class="button"> </td>
+ <td> <input type="button" value="7" onclick="calcNumbers(7)" class="button"> </td>
+<td> <input type="button" value="8" onclick="calcNumbers(8)" class="button"> </td>
+ </tr>
+ <tr>
+<td> <input type="button" value="9" onclick="calcNumbers(9)" class="button"> </td>
+<td> <input type="button" value="0" onclick="calcNumbers(0)" class="button"> </td>
+ <td> <button class="button">=</button> </td>
+<td><input type="reset" class="button" value="AC"></td>
+
+ </tr>
+ 
+ <tr>
+ <td colspan="4"> <input style="margin-top:10px;" id="startbutton" type="button" value="start test" class="button" onclick="starttest();"> </td>
+ </tr>
+ </table>
+ </form>
+ </div>
+</div>
+
+<div id="results" style="display:none;"> 
+ <h1>Weldone!</h1>
+<h2>Tasks Reults</h2>
+<h3> Results of Backward Task :</h3>
+<p> Number of true trials for Backward Task:  <span id="tres"> </span> </p>
+<p> Numer of errors for Backward Task:  <span id="terrors"> </span> </p>
+<p>  Average performance (Score) for Forward Task:  <span id="percentage">   </span> </p>
+ <a href="Page-consent-TestPhase.html" alt='Broken Link'>
+<input type="button" id="nextbutton" class="button" value="Next" >
+</a>
+<a href="Page7-TestPhaseBackward.html" style="text-decoration:none;">
+<input type="button" id="againtest" value="Test Again" class="button" >
+</a> 
+</div>
+<br>
+<script>
+function starttest(c,it,f,t,tr){
+document.getElementById('startbutton').style.display='none';
+localStorage.removeItem("iteration");	
+document.getElementById('show').value = ''; 
+if(c==undefined && it==undefined && f==undefined && t==undefined && tr==undefined){
+console.log("undefine");
+var ARRAY_LENGTH = 2;
+var check = ARRAY_LENGTH+2;
+var storeit = 2;
+wronginput = 0;
+trueinput = 0;
+transactions = 0;
+localStorage.setItem("trueanswer",trueinput);
+localStorage.setItem("wronganswer",wronginput);
+localStorage.setItem("iteration",storeit);
+localStorage.setItem("transaction",transactions);
+}
+else{
+var to = parseInt(tr);
+var tio = to+1;
+localStorage.setItem("transaction",tio);
+var f = parseInt(f);
+var ti = parseInt(t);
+var ti = ti+1;
+if(f==0){
+f = 0;
+}
+if(f==2){
+document.getElementById('testinggg').style.display='none';
+document.getElementById('results').style.display='block';
+var finish = document.getElementById('tres');
+var terrors = document.getElementById('terrors');
+var percentage = document.getElementById('percentage');
+var t = t+1;
+var per = t/tio;
+var perc = per*100;
+if(perc>=80){
+document.getElementById('nextbutton').style.display='block';
+document.getElementById('againtest').style.display='none';
+}
+else{
+document.getElementById('nextbutton').style.display='none';
+document.getElementById('againtest').style.display='block';
+}
+finish.innerHTML = t;
+terrors.innerHTML = tio-t;
+var perc = parseFloat(perc).toFixed(2);
+percentage.innerHTML = perc;
+}
+else{
+var check = c+2;
+if(it<check){
+var ARRAY_LENGTH = c;
+var integer = parseInt(it);
+var storeit = integer+1;
+var t = parseInt(t);
+var t = t+1;
+localStorage.setItem("iteration",storeit);
+localStorage.setItem("trueanswer",t);
+}
+else{
+var t = parseInt(t);
+var t = t+1;
+var ARRAY_LENGTH = c+1;
+var storeit = c+1;  
+localStorage.setItem("iteration",storeit);
+localStorage.setItem("trueanswer",t);
+}
+}
+console.log(t);
+localStorage.setItem("wronganswer",f);
+}
+if(ARRAY_LENGTH<=2){
+const randomArray = [];
+var z = '';
+var zz = '';
+var testshow = document.getElementById('show');
+localStorage.removeItem("store");	
+for(let i = 0; i<ARRAY_LENGTH; i++) {
+        setTimeout(function () {
+		    var y = Math.floor(Math.random() * 9 + 0);
+testshow.value = y;			
+zz += y;
+var z = reverseNumber(zz);			
+localStorage.setItem("store",z);
+if(i == ARRAY_LENGTH-1){
+setTimeout(function () {
+document.getElementById('show').value = '';	
+}, 1000);
+}	
+        }, i*1000);
+}
+}
+else{
+document.getElementById('testinggg').style.display='none';
+document.getElementById('results').style.display='block';
+var finish = document.getElementById('tres');
+var terrors = document.getElementById('terrors');
+var percentage = document.getElementById('percentage');
+var per = t/tio;
+var perc = per*100;
+if(perc>=80){
+document.getElementById('nextbutton').style.display='block';
+document.getElementById('againtest').style.display='none';
+}
+else{
+document.getElementById('nextbutton').style.display='none';
+document.getElementById('againtest').style.display='block';
+}
+finish.innerHTML = t;
+terrors.innerHTML = tio-t;
+var perc = parseFloat(perc).toFixed(2);
+percentage.innerHTML = perc;
+}
+}
+
+function calcNumbers(res){
+var checkstorenumber = localStorage.getItem("store");
+document.getElementById('show').value += res;
+var numbers = document.getElementById('show').value;
+if(numbers.length == checkstorenumber.length){
+matchnumber(numbers);
+}
+}
+
+function matchnumber(getnumber){
+var storenumber = localStorage.getItem("store");
+var iteration = localStorage.getItem("iteration");
+var finputs = localStorage.getItem("wronganswer");
+var tinputs = localStorage.getItem("trueanswer");
+var trasactioniteration = localStorage.getItem("transaction");
+var count = storenumber.length;
+var label = document.getElementById('label'); 
+var err = document.getElementById('err'); 
+	if(getnumber == storenumber){
+	finputs = 0;
+document.getElementById('label').style.display = 'block';
+	label.innerHTML = "You have Entered Correct";
+setTimeout(function () {
+document.getElementById('label').style.display = 'none';
+starttest(count,iteration,finputs,tinputs,trasactioniteration);
+},5000);
+	}
+	else{
+	document.getElementById('err').style.display = 'block';
+	err.innerHTML = "Wrong Entered";
+	var finputs = parseInt(finputs);
+	var finputs = finputs+1;
+	var tinputs = parseInt(tinputs);
+	var tinputs = tinputs-1;
+	console.log("send finput"+finputs);
+	setTimeout(function () {
+document.getElementById('err').style.display = 'none';
+starttest(count,iteration,finputs,tinputs,trasactioniteration);
+},5000);
+	}
+}
+
+function gameover(trueinputs){
+document.getElementById('finish').style.display='none';
+var error = document.getElementById('error');
+error.innerHTML = "Game Over!Your Score is"+" "+trueinputs;
+}
+
+function reverseNumber(number) {
+  var revNumber = 0;
+  while (number > 0) {
+    revNumber = (revNumber * 10) + (number % 10);
+    number = Math.floor(number / 10);
+  }
+  return revNumber;
+}
+</script>
+</body>
+</html>

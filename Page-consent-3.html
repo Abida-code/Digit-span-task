@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Digit Span Task</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
+<script type="text/javascript" src="Script1.js"></script>
+</head>
+
+<body>
+<h3>Consent to Participate in th study 3/3</h3>
+
+<input type="radio" id="rr">
+I agree that, in the interests of scientific transparency, <br>
+my anonymous data will be made freely available to other researchers in <br>
+accordance with the Open Science Framework (see Open Science Framework ).
+ <br>
+ <br>
+
+<button type="button" class="button" onclick="checkternsandcondition();">Next</button>
+
+<script>
+function checkternsandcondition(){
+        if(document.getElementById('rr').checked) {
+			window.location='Page6-Test-Phase -Forward.html';
+        }
+		else{
+		alert("Please agree with terms and conditions");
+		}
+}
+</script>
+</body>
+</html>

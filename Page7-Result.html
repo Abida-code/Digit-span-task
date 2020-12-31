@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<title>Digit Span Task</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
+<script type="text/javascript" src="Script1.js"></script>
+</head>
+
+<body>
+<h1>Weldone!</h1>
+<h2>Tasks Reults</h2>
+<h3> Results of Forward Task :</h3>
+<p> Number of true trials for Forward Task: <span id="ftr"> </span> <br>
+  Numer of errors for Forward Task:<span id="ffr"> </span>  <br>
+ Average performance (Score) for Forward Task: <span id="fpr">   </span> </p>
+
+
+<h3> Results of Backward Task :</h3>
+<p> Number of true trials for Backward Task: <span id="btr"> </span> <br>
+   Numer of errors for Backward Task:<span id="bfr"> </span> <br>
+    Average performance (Score) for Backward Task:<span id="bpr">   </span> </p>
+
+
+    <script>
+    var btr = document.getElementById('btr');
+    var bfr = document.getElementById('bfr');
+    var bpr = document.getElementById('bpr');
+
+
+var backwardtrueresult = localStorage.getItem("backwardtrueresult");
+var backwardfalseresult = localStorage.getItem("backwardfalseresult");
+var backwardpercenresult = localStorage.getItem("backwardpercenresult");
+
+btr.innerHTML = backwardtrueresult;
+bfr.innerHTML = backwardfalseresult;
+bpr.innerHTML = backwardpercenresult;
+
+document.getElementById('btr').innerHTML = backwardtrueresult;
+document.getElementById('bfr').innerHTML = backwardfalseresult;
+document.getElementById('bpr').innerHTML = backwardpercenresult;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var ftr = document.getElementById('ftr');
+    var ffr = document.getElementById('ffr');
+    var fpr = document.getElementById('fpr');
+
+
+var forwardtrueresult = localStorage.getItem("forwardtrueresult");
+var forwardfalseresult = localStorage.getItem("forwardfalseresult");
+var forwardpercenresult = localStorage.getItem("forwardpercenresult");
+
+ftr.innerHTML = forwardtrueresult;
+ffr.innerHTML = forwardfalseresult;
+fpr.innerHTML = forwardpercenresult;
+
+document.getElementById('ftr').innerHTML = forwardtrueresult;
+document.getElementById('ffr').innerHTML = forwardfalseresult;
+document.getElementById('fpr').innerHTML = forwardpercenresult;
+
+
+    </script>
+
+ <a href="Page9-Thankyou.html" alt='Broken Link'>
+<button type="button" class="button">Next</button>
+</a>
+
+</body>
+</html>
